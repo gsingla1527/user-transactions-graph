@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>User & Transaction Graph</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="./styles.css" />
+  <!-- Cytoscape CDN -->
+  <script src="https://unpkg.com/cytoscape@3.28.1/dist/cytoscape.min.js"></script>
+</head>
+<body>
+  <div class="app-root">
+    <header class="app-header">
+      <div class="logo">Relationship Explorer</div>
+      <div class="header-right">
+        <span class="badge">Neo4j</span>
+        <span class="badge badge-accent">Girish Intern Task</span>
+      </div>
+    </header>
+
+    <main class="app-main">
+      <aside class="sidebar">
+        <section class="panel">
+          <h2>Search</h2>
+          <label>
+            User ID:
+            <input id="userSearch" placeholder="e.g. user_10" />
+          </label>
+          <button id="loadUserBtn">Load User Graph</button>
+
+          <label>
+            Transaction ID:
+            <input id="txSearch" placeholder="e.g. tx_50" />
+          </label>
+          <button id="loadTxBtn">Load Transaction Graph</button>
+        </section>
+
+        <section class="panel">
+          <h2>Filters</h2>
+          <label><input type="checkbox" id="toggleUsers" checked /> Show Users</label>
+          <label><input type="checkbox" id="toggleTxs" checked /> Show Transactions</label>
+          <label><input type="checkbox" id="toggleShared" checked /> Show Shared Attribute Links</label>
+          <label><input type="checkbox" id="toggleMoney" checked /> Show Money Flow</label>
+          <label><input type="checkbox" id="toggleTT" checked /> Show Tx-Tx Links</label>
+        </section>
+
+        <section class="panel list-panel">
+          <h2>Quick Lists</h2>
+          <button id="loadUserListBtn">List Users</button>
+          <button id="loadTxListBtn">List Transactions</button>
+          <div id="listContainer"></div>
+        </section>
+      </aside>
+
+      <section class="graph-section">
+        <div id="cy"></div>
+        <div class="legend">
+          <span class="chip chip-user">User</span>
+          <span class="chip chip-tx">Transaction</span>
+          <span class="chip chip-sent">SENT/RECEIVED</span>
+          <span class="chip chip-shared">Shared Attr</span>
+          <span class="chip chip-tt">Tx-Tx</span>
+        </div>
+      </section>
+    </main>
+
+    <footer class="app-footer">
+      <span>Girish Project</span>
+      <span id="status">Idle</span>
+    </footer>
+  </div>
+
+  <script src="./app.js"></script>
+</body>
+</html>
